@@ -1,0 +1,5 @@
+#rightPane {
+    -fx-background-image: url("../../../../../src/images/bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
