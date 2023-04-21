@@ -22,7 +22,6 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) {
         try {
             this.primaryStage=primaryStage;
-            //show1();
             show2();
         } catch(Exception e) {
             System.out.println("Errors");
@@ -30,19 +29,11 @@ public class HelloApplication extends Application {
         }
     }
 
-    public void show1(){
-        BorderPane root = new BorderPane();
-        Scene scene = new Scene(root,400,400);
-        //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
     public void show2() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(HelloApplication.class.getResource("hello-view.fxml"));
+        fxmlLoader.setLocation(HelloApplication.class.getResource("login-view.fxml"));
         Parent root = fxmlLoader.load();
-        JDBCstuffs loginViewController = fxmlLoader.getController();
+        buttonActionsLogin buttonActions = fxmlLoader.getController();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

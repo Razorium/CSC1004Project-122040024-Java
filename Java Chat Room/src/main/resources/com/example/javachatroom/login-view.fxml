@@ -9,22 +9,27 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javachatroom.JDBCstuffs">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javachatroom.buttonActionsLogin">
    <children>
       <AnchorPane prefHeight="445.0" prefWidth="652.0">
          <children>
+            <Button fx:id="registerbutton" layoutX="124.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Register" textFill="#4366ff">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
             <Label layoutX="43.0" layoutY="37.0" text="Welcome to Java Chat Room!">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="username" layoutX="43.0" layoutY="92.0" prefHeight="34.0" prefWidth="223.0" promptText="Username">
+            <TextField fx:id="usernamelogin" layoutX="43.0" layoutY="92.0" prefHeight="34.0" prefWidth="223.0" promptText="Username">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="password" layoutX="43.0" layoutY="144.0" prefHeight="34.0" prefWidth="223.0" promptText="Password" />
-            <Button layoutX="152.0" layoutY="235.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="Login" onAction="#smogabutton">
+            <TextField fx:id="passwordlogin" layoutX="43.0" layoutY="144.0" prefHeight="34.0" prefWidth="223.0" promptText="Password" />
+            <Button fx:id="loginbutton" layoutX="123.0" layoutY="220.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="Login">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -34,6 +39,7 @@
                   <Image url="@../../../images/bg.jpg" />
                </image>
             </ImageView>
+            <Label layoutX="83.0" layoutY="292.0" text="Don't have an account yet?" />
          </children>
       </AnchorPane>
    </children>
