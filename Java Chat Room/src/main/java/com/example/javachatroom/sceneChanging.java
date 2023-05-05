@@ -32,23 +32,24 @@ public class sceneChanging {
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        stage.setScene(new Scene(root, 640, 360));
+        stage.setScene(new Scene(root, 720, 480));
         stage.show();
     }
 
-    public static void changescenetomain(ActionEvent event, String fxmlfile, String title){
+    public static void changescenetomain(ActionEvent event, String fxmlfile, String title, String username){
         Parent root = null;
 
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(sceneChanging.class.getResource(fxmlfile));
             root = fxmlLoader.load();
-            ClientPageController clientPageController = fxmlLoader.getController();
+            MainPageController mainPageController = fxmlLoader.getController();
+            mainPageController.setUsername(username);
         } catch (IOException e){
             e.printStackTrace();
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        stage.setScene(new Scene(root, 640, 360));
+        stage.setScene(new Scene(root, 720, 480));
         stage.show();
     }
 }

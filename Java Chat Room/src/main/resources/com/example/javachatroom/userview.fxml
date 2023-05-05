@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javachatroom.ClientPageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javachatroom.MainPageController">
    <children>
-      <HBox prefHeight="402.0" prefWidth="118.0">
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane prefHeight="402.0" prefWidth="602.0">
          <children>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+            <ScrollPane fx:id="scrollpaneforchat" layoutY="57.0" prefHeight="302.0" prefWidth="612.0">
                <content>
-                  <VBox prefHeight="508.0" prefWidth="101.0" />
+                  <VBox fx:id="vboxforchat" prefHeight="300.0" prefWidth="595.0" stylesheets="@styles.css" />
                </content>
             </ScrollPane>
-         </children>
-      </HBox>
-      <AnchorPane layoutX="118.0" prefHeight="402.0" prefWidth="484.0">
-         <children>
-            <ScrollPane prefHeight="358.0" prefWidth="484.0">
-               <content>
-                  <VBox prefHeight="344.0" prefWidth="467.0" />
-               </content>
-            </ScrollPane>
-            <TextField layoutY="358.0" prefHeight="44.0" prefWidth="410.0" />
-            <Button layoutX="426.0" layoutY="367.0" mnemonicParsing="false" text="Send" />
+            <TextField fx:id="messagefield" layoutY="358.0" prefHeight="44.0" prefWidth="543.0" />
+            <Button fx:id="sendbutton" layoutX="579.0" layoutY="368.0" mnemonicParsing="false" stylesheets="@styles.css">
+               <graphic>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/send.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label alignment="TOP_CENTER" layoutX="239.0" layoutY="18.0" text="Java Chat Room">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="voicebutton" layoutX="546.0" layoutY="368.0" mnemonicParsing="false" stylesheets="@styles.css">
+               <graphic>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/mic.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

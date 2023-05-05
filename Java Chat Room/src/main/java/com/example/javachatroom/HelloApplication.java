@@ -24,7 +24,6 @@ public class HelloApplication extends Application {
             this.primaryStage=primaryStage;
             show2();
         } catch(Exception e) {
-            System.out.println("Errors");
             e.printStackTrace();
         }
     }

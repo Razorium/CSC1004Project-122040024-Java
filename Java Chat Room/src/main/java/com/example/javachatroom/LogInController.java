@@ -86,7 +86,7 @@ public class LogInController{
                 while(resultSet.next()){
                     String getPassword = resultSet.getString("pass");
                     if(getPassword.equals(password)){
-                        sceneChanging.changescenetomain(event, "userview.fxml", "Java Chat Room");
+                        sceneChanging.changescenetomain(event, "userview.fxml", "Java Chat Room", username);
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("The username or password you entered might be incorrect");
