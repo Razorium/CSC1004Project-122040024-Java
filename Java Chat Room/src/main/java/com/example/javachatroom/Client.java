@@ -23,6 +23,9 @@ public class Client implements Runnable{
         yes.addVoice(audio);
         objectOutputStream.writeObject(yes);
     }
+    public void sendImagemessage(Message yes) throws IOException{
+        objectOutputStream.writeObject(yes);
+    }
 
     class Listentomessages implements Runnable{
         @Override

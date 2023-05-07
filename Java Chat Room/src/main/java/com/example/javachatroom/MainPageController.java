@@ -7,16 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 import javax.sound.sampled.LineUnavailableException;
+import javafx.scene.image.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +33,18 @@ public class MainPageController implements Initializable {
     private VBox vboxforchat;
     @FXML
     private Button voicebutton;
+    @FXML
+    private Button imagebutton;
+    @FXML
+    private MenuItem smileyface;
+    @FXML
+    private MenuItem ketawabutnangis;
+    @FXML
+    private MenuItem oke;
+    @FXML
+    private MenuItem makasih;
+    @FXML
+    private MenuItem melet;
 
     public void setUsername(String username){
         this.username = username;
@@ -47,6 +57,26 @@ public class MainPageController implements Initializable {
         thread.start();
         System.out.println("Joined the chatroom successfully");
 
+        imagebutton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String path = messagefield.getText();
+                messagefield.clear();
+                Message yes = new Message(username);
+                yes.setType("picture");
+                Image gambar = new Image(path);
+                if(gambar != null){
+                    int[][] gambarbuatsend = imagedecompose.convert(gambar);
+                    yes.addImage(gambarbuatsend);
+                    displayimagemessage(gambar, username, Pos.CENTER_RIGHT);
+                    try {
+                        client.sendImagemessage(yes);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
         voicebutton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -93,6 +123,41 @@ public class MainPageController implements Initializable {
                 }
             }
         });
+
+        smileyface.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                emojiaddition("\uD83D\uDE04");
+            }
+        });
+
+        ketawabutnangis.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                emojiaddition("\uD83E\uDD23");
+            }
+        });
+
+        oke.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                emojiaddition("\uD83D\uDC4C");
+            }
+        });
+
+        makasih.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                emojiaddition("\uD83D\uDE4F");
+            }
+        });
+
+        melet.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                emojiaddition("\uD83D\uDE0B");
+            }
+        });
     }
 
     public void displayaudiomessage(Message message, String parausername, Pos alignment) throws LineUnavailableException {
@@ -123,6 +188,29 @@ public class MainPageController implements Initializable {
         textline.getChildren().add(bubble);
         textline.setAlignment(alignment);
         vBox.getChildren().add(textline);
+        vboxforchat.getChildren().add(vBox);
+    }
+    public void displayimagemessage(Image gambar, String parausername, Pos alignment){
+        VBox vBox = new VBox();
+        HBox gambarline = new HBox();
+        HBox userlabelline = new HBox();
+        Label userlabel = new Label();
+
+        vBox.setPadding(new Insets(5));
+        userlabel.setText(parausername);
+        userlabel.setPadding(new Insets(5));
+        userlabel.setStyle("-fx-text-fill: #ffffff");
+        userlabelline.getChildren().add(userlabel);
+        userlabelline.setAlignment(alignment);
+        vBox.getChildren().add(userlabelline);
+
+        ImageView frame = new ImageView(gambar);
+        frame.setFitWidth(300);
+        frame.setPreserveRatio(true);
+        gambarline.getChildren().add(frame);
+
+        gambarline.setAlignment(alignment);
+        vBox.getChildren().add(gambarline);
         vboxforchat.getChildren().add(vBox);
     }
 
@@ -158,6 +246,12 @@ public class MainPageController implements Initializable {
     public static void voice(byte[] audio){
         suara = audio;
     }
+
+    public void emojiaddition(String emoji){
+        String currentline = messagefield.getText();
+        String addedline = currentline + emoji;
+        messagefield.setText(addedline);
+    }
     public void addMessage(Message message){
         if(message.getType().equals("text")) {
             String username1 = message.returnusername();
@@ -172,6 +266,10 @@ public class MainPageController implements Initializable {
                     throw new RuntimeException(e);
                 }
             });
+        } else if(message.getType().equals("picture")){
+            String username3 = message.returnusername();
+            Image gambardisend = imagedecompose.getImage(message.getImage());
+            Platform.runLater(() -> displayimagemessage(gambardisend, username3, Pos.CENTER_LEFT));
         }
     }
 
