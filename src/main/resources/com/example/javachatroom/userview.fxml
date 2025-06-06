@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javachatroom.MainPageController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane prefHeight="402.0" prefWidth="602.0">
+         <children>
+            <ScrollPane fx:id="scrollpaneforchat" layoutY="57.0" prefHeight="302.0" prefWidth="654.0">
+               <content>
+                  <VBox fx:id="vboxforchat" prefHeight="300.0" prefWidth="646.0" stylesheets="@styles.css" />
+               </content>
+            </ScrollPane>
+            <TextField fx:id="messagefield" layoutX="85.0" layoutY="358.0" prefHeight="44.0" prefWidth="458.0" />
+            <Button fx:id="sendbutton" layoutX="579.0" layoutY="368.0" mnemonicParsing="false" stylesheets="@styles.css">
+               <graphic>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/send.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label alignment="TOP_CENTER" layoutX="239.0" layoutY="18.0" text="Java Chat Room">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="voicebutton" layoutX="546.0" layoutY="368.0" mnemonicParsing="false" stylesheets="@styles.css">
+               <graphic>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/mic.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="imagebutton" layoutX="617.0" layoutY="368.0" mnemonicParsing="false" stylesheets="@styles.css">
+               <graphic>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/photo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <MenuButton layoutX="14.0" layoutY="367.0" mnemonicParsing="false" text="Emoji">
+              <items>
+                <MenuItem fx:id="smileyface" mnemonicParsing="false" text="😀" />
+                <MenuItem fx:id="ketawabutnangis" mnemonicParsing="false" text="🤣" />
+                  <MenuItem fx:id="oke" mnemonicParsing="false" text="👌" />
+                  <MenuItem fx:id="makasih" mnemonicParsing="false" text="🙏" />
+                  <MenuItem fx:id="melet" mnemonicParsing="false" text="😋" />
+              </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
